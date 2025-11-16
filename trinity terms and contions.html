@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | Trinity Labs</title>
+  <style>
+    /* 🎨 Base Styles */
+    body {
+      background-color: #161c29;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    /* 🧭 Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      background: rgba(22, 28, 41, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00bfff;
+      cursor: pointer;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00bfff;
+    }
+
+    /* 📜 Terms Container */
+    .terms-container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: rgba(255,255,255,0.05);
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .terms-container h1 {
+      color: #00bfff;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .terms-container h2 {
+      color: #00aaff;
+      margin-top: 25px;
+    }
+
+    .terms-container p {
+      color: #e0e0e0;
+      font-size: 15px;
+      text-align: justify;
+    }
+
+    /* 🧩 Button */
+    .agree-btn {
+      background: linear-gradient(90deg, #00bfff, #0077ff);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto 0 auto;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .agree-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #0077ff, #00bfff);
+    }
+
+    /* ✅ Popup Message */
+    #agree-popup {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #00bfff;
+      color: #161c29;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      font-weight: 600;
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🧭 Navbar -->
+  <nav>
+    <div class="logo" onclick="window.location.href='index.html'">Trinity Labs</div>
+    <div class="nav-links">
+      <a href="trinity.html">Home</a>
+      <a href="registernow.trinity.html">Register</a>
+      <a href="support.trinity.html">Support</a>
+    </div>
+  </nav>
+
+  <!-- 📜 Terms & Conditions Section -->
+  <div class="terms-container">
+    <h1>Terms & Conditions</h1>
+
+    <p>Welcome to <strong>Trinity Labs</strong>. By accessing our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully before using our website or services.</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>By registering or using our services, you confirm that you accept these Terms & Conditions and agree to follow them. If you do not agree, please do not continue to use our services.</p>
+
+    <h2>2. Service Use</h2>
+    <p>Our services are provided for development and digital assistance purposes. You agree not to misuse our resources, code, or systems in any unauthorized way, including attempting to hack, disrupt, or replicate our work.</p>
+
+    <h2>3. Intellectual Property</h2>
+    <p>All content, code, and visuals on this site are the intellectual property of Trinity Labs. You may not reproduce, distribute, or modify them without prior written permission.</p>
+
+    <h2>4. Privacy Policy</h2>
+    <p>We respect your privacy and will never share your personal information without consent. Our privacy practices are detailed in our separate Privacy Policy page.</p>
+
+    <h2>5. Payment and Refunds</h2>
+    <p>For paid subscriptions or projects, all payments are handled securely. Refunds, if applicable, are subject to review and approval by the Trinity Labs management team.</p>
+
+    <h2>6. Limitation of Liability</h2>
+    <p>Trinity Labs is not liable for any direct or indirect damages arising from the use of our website or services. Use at your own discretion and responsibility.</p>
+
+    <h2>7. Updates to Terms</h2>
+    <p>We may update these Terms from time to time. Continued use of our site means you accept the latest version of the Terms & Conditions.</p>
+
+    <h2>8. images and information used on the page</h2>
+    <p>we used / use many images fro multipe internaet sources and might not have / have  gived their original credits in cause you have any complant please inform us through: <u>complant.trinitylabs@gmail.com</u></p>
+
+
+    <button class="agree-btn" onclick="acceptTerms()"><a href="trinity.html"> Agree ✅</a></button>
+  </div>
+
+  <div id="agree-popup">✅ You’ve agreed to Trinity Labs Terms!</div>
+
+  <script>
+    function acceptTerms() {
+      const popup = document.getElementById("agree-popup");
+      popup.style.display = "block";
+
+      // Save agreement to localStorage
+      localStorage.setItem("trinity_terms_agreed", "true");
+
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 3000);
+    }
+
+    // Auto-check if already agreed
+    window.onload = () => {
+      if (localStorage.getItem("trinity_terms_agreed") === "true") {
+        document.querySelector(".agree-btn").textContent = "✅ Already Agreed";
+        document.querySelector(".agree-btn").disabled = true;
+        document.querySelector(".agree-btn").style.opacity = "0.6";
+      }
+    }
+  </script>
+
+</body>
+</html>

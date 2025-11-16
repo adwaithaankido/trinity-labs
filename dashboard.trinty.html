@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trinity Dashboard — Responsive VS Code UI</title>
+  <style>
+    :root{
+      --bg:#11151b;
+      --panel:#1e1e1e;
+      --border:#2d2d2d;
+      --accent:#007acc;
+      --radius:8px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:white;
+      font-family:"Cascadia Code", monospace;
+      height:100vh;
+      display:flex;
+      flex-direction:row;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+      width:250px;
+      background:var(--panel);
+      border-right:2px solid var(--border);
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      transition:0.3s;
+    }
+
+    .sidebar img{width:180px;margin-bottom:20px;}
+
+    .sidebar button{
+      background:#252526;
+      border:none;
+      color:white;
+      padding:12px;
+      border-radius:var(--radius);
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.25s;
+    }
+    .sidebar button:hover{
+      background:var(--accent);
+      box-shadow:0 0 12px #007acc88;
+    }
+
+    /* MOBILE SIDEBAR TOGGLE */
+    .sidebar-toggle{
+      position:fixed;
+      top:12px;
+      left:12px;
+      background:var(--accent);
+      border:none;
+      padding:10px 14px;
+      border-radius:var(--radius);
+      color:white;
+      font-size:1.2rem;
+      z-index:200;
+      display:none;
+    }
+
+    /* MAIN */
+    .main{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      padding:0;
+      overflow:hidden;
+    }
+
+    .tabs{
+      background:#252526;
+      height:42px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding-left:12px;
+      border-bottom:2px solid var(--border);
+    }
+
+    .tab{
+      background:#1e1e1e;
+      padding:8px 14px;
+      border-radius:4px 4px 0 0;
+      color:#bbb;
+    }
+
+    .tab.active{
+      border-top:2px solid var(--accent);
+      color:white;
+    }
+
+    .editor-box{
+      flex:1;
+      display:flex;
+      height:100%;
+      gap:10px;
+      padding:10px;
+    }
+
+    textarea{
+      flex:1;
+      background:#1e1e1e;
+      color:#dcdcdc;
+      border:none;
+      padding:20px;
+      resize:none;
+      outline:none;
+      font-size:15px;
+      border-radius:var(--radius);
+    }
+
+    iframe{
+      flex:1;
+      background:white;
+      border:none;
+      border-radius:var(--radius);
+    }
+
+    .btn-bar{
+      position:absolute;
+      bottom:12px;
+      right:12px;
+      display:flex;
+      gap:12px;
+      z-index:50;
+      flex-wrap:wrap;
+    }
+
+    .btn-bar button{
+      padding:10px 14px;
+      border:none;
+      border-radius:var(--radius);
+      background:var(--accent);
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .btn-bar button:hover{background:#005a9e;}
+
+    /* POPUP */
+    .popup{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .popup-content{
+      background:#1e1e1e;
+      padding:25px;
+      border:2px solid var(--accent);
+      border-radius:var(--radius);
+      width:95%;
+      max-width:360px;
+      text-align:center;
+    }
+
+    input, select{
+      width:90%;
+      padding:12px;
+      margin:10px 0;
+      background:#252526;
+      border:1px solid #333;
+      color:white;
+      border-radius:var(--radius);
+    }
+
+    .close-btn{background:crimson!important;}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .editor-box{flex-direction:column;}
+      textarea, iframe{height:50%;}
+    }
+
+    @media (max-width:700px){
+      .sidebar{position:fixed;left:-260px;top:0;height:100%;z-index:150;}
+      .sidebar.open{left:0;}
+      .sidebar-toggle{display:block;}
+    }
+
+  </style>
+</head>
+<body>
+
+<button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <img src="trinitypanel.logo.png" />
+  <button onclick="openPopup('member')">👥 Add Member</button>
+  <button onclick="openPopup('invite')">📩 Invite</button>
+  <button onclick="openPopup('language')">💻 Add Language</button>
+  <button onclick="openPopup('meeting')">📅 Meeting</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="tabs">
+    <div class="tab active">index.html</div>
+  </div>
+
+  <div class="editor-box">
+    <textarea id="codeArea"><!DOCTYPE html>
+<html>
+<head>
+<title>Hello Trinity!</title>
+</head>
+<body>
+<h1>Welcome!</h1>
+<p>Start editing code from the dashboard 👨‍💻🔥</p>
+</body>
+</html></textarea>
+
+    <iframe id="previewFrame"></iframe>
+  </div>
+
+  <div class="btn-bar">
+    <button onclick="editMode()">✏️ Edit</button>
+    <button onclick="previewCode()">👁️ Preview</button>
+    <button onclick="updateBrowser()">🚀 Open Tab</button>
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content" id="popupContent">
+    <h2 id="popupTitle">Popup</h2>
+    <div id="popupBody"></div>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+function toggleSidebar(){
+  const sb=document.getElementById('sidebar');
+  sb.classList.toggle('open');
+}
+
+/* POPUP */
+const popup=document.getElementById('popup');
+const body=document.getElementById('popupBody');
+const title=document.getElementById('popupTitle');
+
+function openPopup(type){
+  popup.style.display='flex';
+  let html='';
+  if(type==='member'){
+    title.innerText='Add Member';
+    html=`<input type="number" placeholder="SID 6-digit"><button>Submit</button>`;
+  } else if(type==='invite'){
+    title.innerText='Invite Friend';
+    html=`<input type="email" placeholder="Enter Email"><button>Send Invite</button>`;
+  } else if(type==='language'){
+    title.innerText='Add Language';
+    html=`<select><option>JavaScript</option><option>Python</option><option>Java</option><option>C++</option><option>HTML & CSS</option></select><button>Add</button>`;
+  } else if(type==='meeting'){
+    title.innerText='Schedule Meeting';
+    html=`<input type="date"><button>Schedule</button>`;
+  }
+  body.innerHTML=html;
+}
+
+function closePopup(){ popup.style.display='none'; }
+
+/* EDITOR */
+const codeArea=document.getElementById('codeArea');
+const preview=document.getElementById('previewFrame');
+
+function previewCode(){
+  const code=codeArea.value;
+  const doc=preview.contentDocument;
+  doc.open(); doc.write(code); doc.close();
+}
+
+function updateBrowser(){
+  const win=window.open();
+  win.document.write(codeArea.value);
+  win.document.close();
+}
+
+function editMode(){ codeArea.focus(); }
+
+window.onload=previewCode;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trinity Developers — Team</title>
+
+  <style>
+    :root{
+      --bg:#0f141e;
+      --panel:#161c29;
+      --muted:#cfd3da;
+      --accent:#00c8ff;
+      --accent2:#00ffae;
+      --radius:14px;
+      --max-width:1200px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:'Poppins', sans-serif;
+      color:white;
+      -webkit-font-smoothing:antialiased;
+      padding-bottom:40px;
+    }
+
+    /* HEADER */
+    header{
+      padding:18px 0;
+      background:rgba(10,12,16,0.65);
+      backdrop-filter:blur(7px);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+
+    .container{max-width:var(--max-width);margin:auto;padding:0 20px;}
+
+    .nav-flex{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--accent);
+      font-weight:600;
+      font-size:1.2rem;
+    }
+    .brand img{height:42px;}
+
+    nav a{
+      color:var(--muted);
+      margin-left:16px;
+      text-decoration:none;
+      font-weight:600;
+    }
+    nav a:hover{color:var(--accent);}
+
+    /* MOBILE MENU */
+    .menu-btn{
+      display:none;
+      font-size:1.6rem;
+      background:none;
+      border:none;
+      color:white;
+      cursor:pointer;
+    }
+
+    #mobileNav{
+      display:none;
+      background:rgba(15,20,30,0.95);
+      padding:16px;
+      border-radius:var(--radius);
+      margin-top:8px;
+    }
+
+    #mobileNav a{
+      display:block;
+      padding:10px 0;
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* HERO */
+    .hero{
+      text-align:center;
+      padding:70px 0 40px;
+    }
+    .hero h1{
+      font-size:2.6rem;
+      margin-bottom:10px;
+      color:var(--accent);
+    }
+    .hero p{color:var(--muted);max-width:800px;margin:auto;}
+
+    /* DEVELOPERS GRID */
+    .dev-grid{
+      margin-top:40px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .dev-card{
+      background:var(--panel);
+      padding:22px;
+      border-radius:var(--radius);
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:.25s;
+    }
+
+    .dev-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 12px 40px rgba(0,0,0,0.55);
+      border-color:rgba(0,255,180,0.14);
+    }
+
+    .dev-card img{
+      height:110px;
+      width:110px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:10px;
+      border:3px solid var(--accent);
+    }
+
+    .dev-name{
+      font-weight:700;
+      font-size:1.2rem;
+      margin-bottom:6px;
+    }
+
+    .dev-role{color:var(--muted);font-size:0.95rem;margin-bottom:12px;}
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+    }
+
+    .socials img{height:26px;width:26px;opacity:.9;}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .dev-grid{grid-template-columns:repeat(2,1fr);}  
+    }
+    @media (max-width:650px){
+      nav{display:none;}
+      .menu-btn{display:block;}
+    }
+    @media (max-width:560px){
+      .dev-grid{grid-template-columns:1fr;}
+      .hero h1{font-size:2rem;}
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav-flex">
+        <a class="brand" href="trinity.html"><img src="logo.trinity.png"></a>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <nav>
+          <a href="trinity.html">Home</a>
+          <a href="trinity.plans.html">Plans</a>
+          <a href="support.trinity.html">Support</a>
+          <a href="registernow.trinity.html">Register</a>
+        </nav>
+      </div>
+
+      <div id="mobileNav"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Meet Our Developers</h1>
+    <p>The minds behind Trinity Labs — building systems, designing UI, maintaining servers and crafting the Trinity experience.</p>
+  </section>
+
+  <!-- DEVELOPERS GRID -->
+  <section class="container">
+    <div class="dev-grid">
+
+      <div class="dev-card">
+        <img src="https://i.pravatar.cc/150?img=1" />
+        <div class="dev-name">Arjun Patel</div>
+        <div class="dev-role">Lead Full‑Stack Developer</div>
+
+        <div class="socials">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <img src="https://i.pravatar.cc/150?img=5" />
+        <div class="dev-name">Mira Sandhu</div>
+        <div class="dev-role">UI/UX Designer</div>
+
+        <div class="socials">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" />
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <img src="https://i.pravatar.cc/150?img=3" />
+        <div class="dev-name">Rahul Verma</div>
+        <div class="dev-role">Backend Engineer</div>
+
+        <div class="socials">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <img src="https://i.pravatar.cc/150?img=12" />
+        <div class="dev-name">Sana Qureshi</div>
+        <div class="dev-role">AI Systems Engineer</div>
+
+        <div class="socials">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <img src="https://i.pravatar.cc/150?img=15" />
+        <div class="dev-name">Karan Dev</div>
+        <div class="dev-role">Cybersecurity & Systems Admin</div>
+
+        <div class="socials">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" />
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <img src="https://i.pravatar.cc/150?img=10" />
+        <div class="dev-name">Anaya Rao</div>
+        <div class="dev-role">Cloud & Data Architect</div>
+
+        <div class="socials">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu(){
+      const m=document.getElementById("mobileNav");
+      if(m.style.display==="block"){
+        m.style.display="none";
+      } else{
+        m.innerHTML = `
+          <a href='trinity.html'>Home</a>
+          <a href='trinity.plans.html'>Plans</a>
+          <a href='support.trinity.html'>Support</a>
+          <a href='registernow.trinity.html'>Register</a>
+        `;
+        m.style.display="block";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trinity Labs — Responsive</title>
+  <style>
+    :root{
+      --bg:#0f141e;
+      --panel:#161c29;
+      --muted:#cfd3da;
+      --accent:#00c8ff;
+      --accent-2:#00ffae;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --max-width:1200px;
+    }
+
+    /* Reset + base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+    /* NAVBAR */
+    header.site-header{background:linear-gradient(180deg, rgba(10,12,16,0.6), rgba(12,16,22,0.8));backdrop-filter:blur(6px);position:sticky;top:0;z-index:60}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:44px;width:auto;display:block}
+    .brand h1{font-size:1.05rem;margin:0;color:var(--accent)}
+
+    nav.primary{display:flex;align-items:center;gap:18px}
+    nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px;border-radius:8px}
+    nav.primary a:hover{color:var(--accent)}
+
+    /* CTA / register */
+    .cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0d1117;padding:8px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+    .cta .btn-video{position:absolute;left:-9999px;opacity:0}
+
+    /* hamburger */
+    .menu-toggle{display:none;background:transparent;border:1px solid transparent;padding:8px;border-radius:8px;color:var(--muted);cursor:pointer}
+
+    /* HERO */
+    .hero{padding:70px 0 40px;text-align:center}
+    .hero h2{font-size:2.4rem;margin:0 0 12px;color:var(--accent)}
+    .hero p{max-width:820px;margin:0 auto;color:var(--muted)}
+
+    /* SERVICES */
+    section{padding:48px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--panel);padding:22px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.02);transition:transform .18s, box-shadow .18s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6);border-color:rgba(0,200,255,0.08)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0;color:var(--muted)}
+
+    /* FOOTER */
+    footer.site-footer{background:linear-gradient(180deg, rgba(10,12,16,0.6), rgba(12,16,22,0.8));padding:30px 0;margin-top:40px}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+    .socials{display:flex;gap:12px;justify-content:center;margin-top:16px}
+    .socials img{height:28px;width:28px;display:block;opacity:.9}
+
+    /* divider */
+    .divider{height:4px;border-radius:6px;background:linear-gradient(90deg,var(--accent),#6a00ff,var(--accent));max-width:600px;margin:40px auto}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .text-center{text-align:center}
+
+    /* Responsive grid for nav when small */
+    .mobile-menu{display:none}
+
+    /* tiny screens to large responsive breakpoints */
+    @media (max-width:1100px){
+      .cards{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:800px){
+      .nav-wrap{padding:12px 0}
+      nav.primary{display:none}
+      .menu-toggle{display:inline-flex}
+      .hero h2{font-size:1.8rem}
+      .cards{grid-template-columns:1fr}
+    }
+
+    @media (max-width:480px){
+      .brand img{height:36px}
+      .hero{padding:48px 0 24px}
+      .hero h2{font-size:1.5rem}
+      .container{padding:0 14px}
+      .cta{padding:8px 10px}
+    }
+
+    /* Mobile menu open state */
+    .mobile-menu.open{display:block;background:linear-gradient(180deg, rgba(22,28,41,0.95), rgba(12,16,22,0.95));padding:12px;border-radius:10px;margin-top:8px}
+    .mobile-menu.open a{display:block;padding:10px 6px;color:var(--muted);text-decoration:none;border-radius:6px}
+    .mobile-menu.open a:hover{color:var(--accent)}
+
+    /* Accessibility focus */
+    a:focus,button:focus{outline:3px solid rgba(0,200,255,0.12);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="brand" aria-label="Trinity Labs">
+        <a href="trinity.html" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none"><img src="trinity labs logo for nav.png" alt="Trinity Labs logo""></a>
+      </div>
+
+      <nav class="primary" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="devs trinity.html">Our Devs</a>
+        <a href="trinity.plans.html">Subscriptions</a>
+        <a href="support.trinity.html">Support</a>
+        <a href="trinity terms and contions.html">Terms</a>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <a class="cta" href="registernow.trinity.html" aria-label="Register now">
+          <span>Register Now</span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" id="menuToggle">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile menu (keeps page semantic) -->
+    <div class="container">
+      <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <!-- populated by JS for duplicate-free links -->
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero container">
+      <h2><img src="trinity labs logo for nav.png" style="width: 300px;"/></h2>
+      <p>Trinity Labs — development, backend systems, and delightful UI/UX. Fast, secure, and responsive by default. Explore our teams, plans and support.</p>
+    </section>
+
+    <section id="about" class="container">
+      <h3 class="text-center" style="color:var(--accent);margin-bottom:12px">About Us</h3>
+      <p class="muted text-center" style="max-width:900px;margin:0 auto">At <strong>Trinity Labs</strong>, we turn ideas into interactive realities. From cutting-edge web development to scalable backends — we innovate and craft experiences that perform across devices and screen sizes.</p>
+    </section>
+
+    <section id="services" class="container">
+      <h3 class="text-center" style="color:var(--accent);margin-bottom:20px">Our Services</h3>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <h3>Web Development</h3>
+          <p class="muted">Responsive, accessible, and performant websites tailored to your brand.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>Backend Solutions</h3>
+          <p class="muted">Secure, scalable, and reliable backend systems and APIs.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3>AI Integration</h3>
+          <p class="muted">Smart automation, LLM integrations, and data-driven features.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section id="contact" class="container text-center">
+      <h3 style="color:var(--accent);margin-bottom:10px">Contact Us</h3>
+      <p class="muted">Email: <a href="mailto:contact@trinitylabs.com" style="color:var(--accent)">contact@trinitylabs.com</a></p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="devs trinity.html">Our Devs</a>
+        <a href="trinity.plans.html">Subscriptions</a>
+        <a href="support.trinity.html">Support</a>
+        <a href="trinity terms and contions.html">Terms</a>
+      </div>
+
+      <div class="socials" aria-hidden="false">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Twitter icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="GitHub icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="LinkedIn icon">
+      </div>
+
+      <p style="color:var(--muted);margin-top:14px">© <span id="year"></span> Trinity Labs — Built for the Future.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Auto-year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu behaviour: duplicate links from desktop nav to mobile
+    (function(){
+      const desktopNav = document.querySelector('nav.primary');
+      const mobileNav = document.getElementById('mobileMenu');
+      const toggle = document.getElementById('menuToggle');
+
+      function populateMobile(){
+        if(!desktopNav || !mobileNav) return;
+        mobileNav.innerHTML = desktopNav.innerHTML + '<a href="registernow.trinity.html">Register Now</a>';
+      }
+
+      populateMobile();
+
+      toggle.addEventListener('click', ()=>{
+        const open = mobileNav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', open? 'false' : 'true');
+        // scroll into view on open for small screens
+        if(open) mobileNav.scrollIntoView({behavior:'smooth',block:'center'});
+      });
+
+      // close mobile menu if viewport expands
+      window.addEventListener('resize', ()=>{
+        if(window.innerWidth > 800){ mobileNav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+      });
+    })();
+
+    // Simple reveal for accessibility (only when supported)
+    (function(){
+      const reveals = document.querySelectorAll('.card');
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.style.opacity = 1; });
+      }, {threshold:0.1});
+      reveals.forEach(r=>{ r.style.opacity = 0; io.observe(r); });
+    })();
+  </script>
+</body>
+</html>

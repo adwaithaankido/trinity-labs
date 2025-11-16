@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trinity Subscriptions</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #0d1117;
+    color: white;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+  header h1 {
+    font-size: 2.8rem;
+    color: #00c8ff;
+  }
+
+  .plans {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    gap: 30px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .plan {
+    background: #161c29;
+    width: 300px;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    transition: 0.3s;
+    border: 2px solid transparent;
+  }
+
+  .plan:hover {
+    transform: translateY(-8px);
+    border-color: #00c8ff;
+    box-shadow: 0 0 30px #00c8ff55;
+  }
+
+  .best {
+    border: 2px solid #00ffae;
+    box-shadow: 0 0 25px #00ffae66;
+  }
+
+  .plan h2 {
+    font-size: 1.8rem;
+    color: #00c8ff;
+  }
+
+  .plan .price {
+    margin-top: 10px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #00ffae;
+  }
+
+  .plan ul {
+    text-align: left;
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .plan ul li {
+    margin: 10px 0;
+    font-size: 1rem;
+    display: flex;
+    gap: 10px;
+  }
+
+  .plan button {
+    margin-top: 20px;
+    background: #00c8ff;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #0d1117;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+
+  .plan button:hover {
+    background: #00a6d6;
+    box-shadow: 0 0 20px #00c8ff88;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Choose Your Subscription</h1>
+  <p>Upgrade Trinity with premium features 🔥</p>
+</header>
+
+<div class="plans">
+
+  <!-- FREE TRIAL PLAN -->
+  <div class="plan">
+    <h2>Free Trial</h2>
+    <p class="price">₹0</p>
+    <p>5 Days Full Access</p>
+
+    <ul>
+      <li>✔ All Dev Tools</li>
+      <li>✔ Basic Analytics</li>
+      <li>✔ Code Editor</li>
+      <li>✔ 24/7 Support (Trial)</li>
+    </ul>
+
+    <button>Start Free Trial</button>
+  </div>
+
+  <!-- WEEKLY PLAN -->
+  <div class="plan best">
+    <h2>Weekly Plan</h2>
+    <p class="price">₹179/week</p>
+    <p>Best for testing business weekly</p>
+
+    <ul>
+      <li>✔ Unlimited Access</li>
+      <li>✔ Team Management</li>
+      <li>✔ Backup & Sync</li>
+      <li>✔ Advanced Analytics</li>
+      <li>✔ Priority Support</li>
+    </ul>
+
+    <button>Choose Weekly</button>
+  </div>
+
+  <!-- MONTHLY PLAN -->
+  <div class="plan">
+    <h2>Monthly Plan</h2>
+    <p class="price">₹499/month</p>
+    <p>Best for companies & teams</p>
+
+    <ul>
+      <li>✔ All Weekly Features</li>
+      <li>✔ Auto Data Backup</li>
+      <li>✔ Unlimited Projects</li>
+      <li>✔ AI Automation Tools</li>
+      <li>✔ Admin Panel Access</li>
+    </ul>
+
+    <button>Choose Monthly</button>
+  </div>
+
+</div>
+
+</body>
+</html>
